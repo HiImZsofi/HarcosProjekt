@@ -25,6 +25,7 @@ public class Harcos {
             alapEletero = 8;
             alapSebzes = 5;
         }
+        this.eletero = getMaxEletero();
     }
 
     public int getSebzes() {
@@ -39,5 +40,9 @@ public class Harcos {
         return alapEletero + szint * 3;
     }
 
-
+    @Override
+    public String toString() {
+       return String.format("%s - LVL: %d - EXP: %d/%d - HP: %d/%d - DMG: %d",
+               nev, szint, tapasztalat, getSzintLepeshez(), eletero, getMaxEletero(), getSebzes());
+    }
 }
