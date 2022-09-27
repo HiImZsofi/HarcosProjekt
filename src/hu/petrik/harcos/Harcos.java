@@ -117,6 +117,16 @@ public class Harcos {
         }
     }
 
+    public void Gyogyul(){
+        if(this.getEletero() == 0){
+            this.setEletero(getMaxEletero());
+        }
+        else{
+            int ujHp = this.getEletero() + 3;
+            this.setEletero(ujHp);
+        }
+    }
+
     @Override
     public String toString() {
        return String.format("%s - LVL: %d - EXP: %d/%d - HP: %d/%d - DMG: %d",
