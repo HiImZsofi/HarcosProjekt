@@ -126,7 +126,7 @@ public class Harcos {
             this.setEletero(ujHp);
         }
     }
-
+ //TODO ha meghalsz akkor kutya vagy
     @Override
     public String toString() {
        return String.format("%s - LVL: %d - EXP: %d/%d - HP: %d/%d - DMG: %d",
