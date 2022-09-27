@@ -75,14 +75,45 @@ public class Harcos {
 
     public void setSzint(int tapasztalat){
         if(this.tapasztalat + tapasztalat >= getSzintLepeshez()){
-            int maradek = this.tapasztalat + tapasztalat - getSzintLepeshez();
             this.szint += 1;
+            int maradek = this.tapasztalat + tapasztalat - getSzintLepeshez();
             this.tapasztalat -= getSzintLepeshez();
             this.tapasztalat = maradek;
             setEletero(getMaxEletero());
         }
         else{
             this.tapasztalat = tapasztalat;
+        }
+    }
+
+    public void Megkuzd(Harcos ellenfel){
+        if(this == ellenfel){
+            System.out.println("A harcos nem küzdhet meg saját magával, adjon meg egy másik harcost.");
+        }
+        else if(this.getEletero() <= 0 || ellenfel.getEletero() <= 0){
+            System.out.println("Valamelyik harcos már halott.");
+        }
+        else{
+            int sebzesUtanHp = ellenfel.getEletero() - this.getSebzes();
+            ellenfel.setEletero(sebzesUtanHp);
+            if(ellenfel.getEletero() > 0){
+                while(this.getEletero() > 0 && ellenfel.getEletero() > 0){
+                    int userSebzesUtan = this.getEletero() - ellenfel.getSebzes();  //félreértelmeztem a feladatot ezért addig ütik egymást amíg meg nem hal az egyik
+                    this.setEletero(userSebzesUtan);                                //későn vettem észre
+                    int oppSebzesUtan = ellenfel.getEletero() - this.getSebzes();   //:(
+                    ellenfel.setEletero(oppSebzesUtan);
+                }
+                if(this.getEletero() > 0 && ellenfel.getEletero() < 0){
+                    System.out.println("User nyert");
+                    int ujTapasztalat = this.getTapasztalat() + 10;
+                    this.setSzint(ujTapasztalat);
+                }
+                else if(this.getEletero() < 0 && ellenfel.getEletero() > 0){
+                    System.out.println("Ellenfél nyert");
+                    int ujTapasztalat = ellenfel.getTapasztalat() + 10;
+                    ellenfel.setSzint(ujTapasztalat);
+                }
+            }
         }
     }
 
