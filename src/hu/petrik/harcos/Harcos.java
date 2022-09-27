@@ -40,6 +40,52 @@ public class Harcos {
         return alapEletero + szint * 3;
     }
 
+    public String getNev() {
+        return nev;
+    }
+
+    public int getSzint() {
+        return szint;
+    }
+
+    public int getTapasztalat() {
+        return tapasztalat;
+    }
+
+    public int getEletero() {
+        return eletero;
+    }
+
+    public int getAlapEletero() {
+        return alapEletero;
+    }
+
+    public int getAlapSebzes() {
+        return alapSebzes;
+    }
+
+    public void setEletero(int eletero){
+        if(this.eletero <= 0){
+            this.tapasztalat = 0;
+        }
+        else if(this.eletero > getMaxEletero()){
+            this.eletero = getMaxEletero();
+        }
+    }
+
+    public void setSzint(int tapasztalat){
+        if(this.tapasztalat + tapasztalat >= getSzintLepeshez()){
+            int maradek = this.tapasztalat + tapasztalat - getSzintLepeshez();
+            this.szint += 1;
+            this.tapasztalat -= getSzintLepeshez();
+            this.tapasztalat = maradek;
+            setEletero(getMaxEletero());
+        }
+        else{
+            this.tapasztalat = tapasztalat;
+        }
+    }
+
     @Override
     public String toString() {
        return String.format("%s - LVL: %d - EXP: %d/%d - HP: %d/%d - DMG: %d",
