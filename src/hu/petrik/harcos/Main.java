@@ -51,6 +51,8 @@ public class Main {
         }
 
         String menupont = " ";
+        int korokszama = 0;
+        double randomharcos = (Math.random() * 3) + 1;
         menupont = sc.nextLine().toLowerCase();
         System.out.println(menupont);
         System.out.println("Válasszon az alábbi listából: a.) Harcolás, b.) Gyógyulás, c.) Kilépés");
@@ -65,12 +67,20 @@ public class Main {
             for (int i = 0; i < harcosok.size(); i++) {
                 harcosok.get(usernumber).Megkuzd(harcosok.get(harcosnumber));
             }
+            korokszama++;
         }
         while(menupont.equals("b")){
             harcosok.get(usernumber).Gyogyul();
+            korokszama++;
         }
         if(menupont.equals("c")){
             return;
+        }
+        else if(korokszama % 3 == 0){
+            for (int i = 0; i < harcosok.size(); i++) {
+                harcosok.get(usernumber).Megkuzd(harcosok.get((int) randomharcos));
+            }
+            korokszama++;
         }
     }
 }
