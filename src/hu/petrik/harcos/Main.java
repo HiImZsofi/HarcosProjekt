@@ -39,8 +39,14 @@ public class Main {
             Harcos getLatestIndex = harcosok.get(harcosok.size() - 1) ;
             if (harcosok.get(i) == getLatestIndex){
                 harcosok.get(i).setNev(username);
-                System.out.println(harcosok.get(i));
+                //System.out.println(harcosok.get(i));
+                System.out.println("Harcos létrehozva");
             }
+        }
+
+        System.out.println("Az összes jelenlegi harcos: ");
+        for (int i = 0; i < harcosok.size(); i++) {
+            System.out.println(i + " " + harcosok.get(i).toString());
         }
     }
 }
