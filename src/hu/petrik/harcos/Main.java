@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static java.lang.System.in;
@@ -47,6 +48,29 @@ public class Main {
         System.out.println("Az összes jelenlegi harcos: ");
         for (int i = 0; i < harcosok.size(); i++) {
             System.out.println(i + " " + harcosok.get(i).toString());
+        }
+
+        String menupont = " ";
+        menupont = sc.nextLine().toLowerCase();
+        System.out.println(menupont);
+        System.out.println("Válasszon az alábbi listából: a.) Harcolás, b.) Gyógyulás, c.) Kilépés");
+        while(menupont.equals("a")){
+            int harcosnumber = 5;
+            System.out.println("Melyik harcossal szeretne megküzdeni(1-3)?");
+            while(harcosnumber > 3 || harcosnumber < 0){
+                System.out.println("Rossz számot adott meg");
+                harcosnumber = Integer.parseInt(sc.nextLine());
+            }
+            harcosnumber += 1;
+            for (int i = 0; i < harcosok.size(); i++) {
+                harcosok.get(usernumber).Megkuzd(harcosok.get(harcosnumber));
+            }
+        }
+        while(menupont.equals("b")){
+            harcosok.get(usernumber).Gyogyul();
+        }
+        if(menupont.equals("c")){
+            return;
         }
     }
 }
