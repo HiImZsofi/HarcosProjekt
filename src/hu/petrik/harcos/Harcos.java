@@ -28,6 +28,10 @@ public class Harcos {
         this.eletero = getMaxEletero();
     }
 
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
     public int getSebzes() {
         return alapSebzes + szint;
     }
